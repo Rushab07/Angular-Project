@@ -17,7 +17,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false,
             validate: {
-                len: [10,20]
+                len: [4,20]
             }
         },
         p_brand: {
@@ -32,12 +32,14 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.INTEGER,
             allowNull: false,
         },
-        p_image: {
-            type: Sequelize.BLOB,
-            allowNull: false,
-        },
         p_description: {
-            type: Sequelize.TEXT,
+            type: Sequelize.STRING,
+        },
+        p_status: {
+            type: Sequelize.STRING,
+        },
+        o_status: {
+            type: Sequelize.STRING,
         }
     });
     return Product_Table;

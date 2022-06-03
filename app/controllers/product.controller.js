@@ -1,36 +1,37 @@
 const db = require("../models");
-const Product_Table = db.Product_Table;
+const Product_Table = db.Product_Tables;
 const Op = db.Sequelize.Op;
-// Create and Save a new Product information
+
+//create product
 exports.create = (req, res) => {
-    // Validate request
-    if (!req.body.p_name) {
-        res.status(400).send({
-        message: "Content can not be empty!"
-    });
-    return;
-    }
-    // Create a Product
-    const product = {
-        p_name: req.body.p_name,
-        p_category: req.body.p_category,
-        p_brand: req.body.p_brand,
-        p_price: req.body.p_price,
-        p_quantity: req.body.p_quantity,
-        p_image: req.body.p_image,
-        p_description: req.body.description
-    };
-     // Save product in the database
-    Product_Table.create(product)
-        .then(data => {
-         res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-            message:
-            err.message || "Some error occurred while creating the seller."
-        });
-    });
+  // Validate request
+  if (!req.body.p_name) {
+      res.status(400).send({
+      message: "Content can not be empty!"
+  });
+  return;
+  }
+  // Create a Product
+  const product = {
+      p_name: req.body.p_name,
+      p_category: req.body.p_category,
+      p_brand: req.body.p_brand,
+      p_price: req.body.p_price,
+      p_quantity: req.body.p_quantity,
+      p_description: req.body.description
+  };
+   // Save product in the database
+  
+  Product_Table.create(product)
+      .then(data => {
+       res.send(data);
+      })
+      .catch(err => {
+          res.status(500).send({
+          message:
+          err.message || "Some error occurred while creating the seller."
+      });
+  });
 };
 // Retrieve all seller information from the database.
 exports.findAll = (req, res) => {

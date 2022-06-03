@@ -29,6 +29,7 @@ exports.create = (req, res) => {
         });
     });
 };
+
 // Retrieve all seller information from the database.
 exports.findAll = (req, res) => {
         const s_name = req.query.s_name;
